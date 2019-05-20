@@ -1,35 +1,35 @@
-#include <cstdlib>
-
 // Keep Functions Simple //
 // They should be small
-int ValidateAddress(const Address& addr) // Function does lots of check and operation
+// Function does lots of check and operation
+int ValidateAddress(const Address& addr) 
 {
-    if (addr.firstName.empty())
-    {
-        printf("Error! First name empty!");
-        return ERROR_FIRST_NAME;
-    }
+  if (addr.firstName.empty())
+  {
+    printf("Error! First name empty!");
+    return ERROR_FIRST_NAME;
+  }
 
-    if (addr.lastName.empty())
-    {
-        printf("Error! Last name empty!");
-        return ERROR_LAST_NAME;
-    }
+  if (addr.lastName.empty())
+  {
+    printf("Error! Last name empty!");
+    return ERROR_LAST_NAME;
+  }
 
-    if (addr.state.empty())
-    ...
+  if (addr.state.empty())
+  ...
 }
 
-int ValidateAddress(const Address& addr) // One improvement is to wrap similar categories up so this function becomes simpler
+// One improvement is to wrap similar categories up so this function becomes simpler
+int ValidateAddress(const Address& addr) 
 {
-    int errorCode = CheckAddressName(addr);
-    if (errorCode != ERROR_NONE)
-    {
-        return errorCode;
-    }
+  int errorCode = CheckAddressName(addr);
+  if (errorCode != ERROR_NONE)
+  {
+    return errorCode;
+  }
 
-    if (addr.state.empty())
-    ...
+  if (addr.state.empty())
+  ...
 }
 
 // Do One Thing
@@ -50,11 +50,11 @@ FriedEgg Cooker::Cook(Egg egg)
 
 void PrepareEgg()
 {
-    Egg egg = TakeEgg(); // 1st level of abstraction, call function
-    FriedEgg friedEgg = Cooker::Cook(egg); // 2nd level of abstraction, class function operation
-    string eggName = friedEgg.GetName();
-    eggName.append('\n'); // 3rd level of abstraction, direct operation
-    OutputEgg(friedEgg); // 1st level of abstraction
+  Egg egg = TakeEgg(); // 1st level of abstraction, call function
+  FriedEgg friedEgg = Cooker::Cook(egg); // 2nd level of abstraction, class function operation
+  string eggName = friedEgg.GetName();
+  eggName.append('\n'); // 3rd level of abstraction, direct operation
+  OutputEgg(friedEgg); // 1st level of abstraction
 }
 
 Egg TakeEgg()
@@ -64,10 +64,10 @@ Egg TakeEgg()
 // The stepdown rule cleaned 
 void PrepareEgg()
 {
-    Egg egg = TakeEgg(); 
-    FriedEgg friedEgg = FryEgg(egg);
-    InitializeFriedEggData(friedEgg);
-    OutputEggData(friedEgg);
+  Egg egg = TakeEgg(); 
+  FriedEgg friedEgg = FryEgg(egg);
+  InitializeFriedEggData(friedEgg);
+  OutputEggData(friedEgg);
 }
 
 Egg TakeEgg()
@@ -103,19 +103,19 @@ const bool shouldPerformAction = true;
 RunLeft(shouldPerformAction);
 
 // Should have no side effects 
-bool CheckHasInitialized(Object object)
+bool CheckHasInitialized(Object &object)
 {
-    if (!object.IsInitialized())
-    {
-        object.Initialize();
-    }
+  if (!object.IsInitialized())
+  {
+    object.Initialize();
+  }
 
-    return object.IsInitialized();
+  return object.IsInitialized();
 }
 
-bool CheckHasInitialized(Object object)
+bool CheckHasInitialized(Object &object)
 {
-    return object.IsInitialized();
+  return object.IsInitialized();
 }
 
 // Separate command and query 
@@ -131,34 +131,34 @@ if (HasExistingValue())
 // Don’t repeat yourself 
 void MoveFront()
 {
-    ActivateMuscle();
-    RaiseLeg();
-    PlaceLegInfront();
+  ActivateMuscle();
+  RaiseLeg();
+  PlaceLegInfront();
 }
 
 void MoveBack()
 {
-    ActivateMuscle();
-    RaiseLeg();
-    PlaceLegBehind();
+  ActivateMuscle();
+  RaiseLeg();
+  PlaceLegBehind();
 }
 
 void MoveFront()
 {
-    PreMove();
-    PlaceLegInfront();
+  PreMove();
+  PlaceLegInfront();
 }
 
 void MoveBack()
 {
-    PreMove();
-    PlaceLegBehind();
+  PreMove();
+  PlaceLegBehind();
 }
 
 void PreMove()
 {
-    ActivateMuscle();
-    RaiseLeg();
+  ActivateMuscle();
+  RaiseLeg();
 }
 
 ///////////////////////////
