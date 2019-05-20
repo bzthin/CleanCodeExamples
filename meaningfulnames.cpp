@@ -38,8 +38,8 @@ Number phoneString; // Forgot to update the name!
 Number phoneNumber;
 
 // Avoid internal joke names
-bool holyHandGrenade;
-bool shutdownSystemFlag;
+void HolyHandGrenade() {};
+void ShutdownAllSystem() {};
 
 // Use domain names 
 bool IsSimilarWhenReversed(string input);
@@ -62,3 +62,4 @@ Address addr;
 addr.name;
 addr.city;
 addr.state;
+
